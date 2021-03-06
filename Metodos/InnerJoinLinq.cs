@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +21,7 @@ namespace Linq.Metodos
             vendedores.Add(new Vendedor { Id = 21, PrimeiroNome = "Sandro", UltimoNome = "Silva", VendasSemestrais = 800, RegiaoId = 5 });
             vendedores.Add(new Vendedor { Id = 22, PrimeiroNome = "Antonio", UltimoNome = "Silva", VendasSemestrais = 800, RegiaoId = 8 });
 
-            var grupoVendedoresRegiaoLinq = vendedores
+            var grupo = vendedores
                             .Join(Regiao.ObterTodos(),
                                     v => v.RegiaoId,
                                     r => r.Id,
@@ -32,8 +31,10 @@ namespace Linq.Metodos
                                         Regiao = r.Nome
                                     });
 
-            foreach(var item in grupoVendedoresRegiaoLinq)
+            foreach(var item in grupo)
+            {
                 Console.WriteLine($"{item.Vendedor} - {item.Regiao}");
+            }
 
             #endregion
 
@@ -41,7 +42,7 @@ namespace Linq.Metodos
 
             Titulo.ExibirSub("SQL");
 
-            var grupoVendedoresRegiaoSql = from v in Vendedor.ObterTodos()
+            var grupoSql = from v in Vendedor.ObterTodos()
                            join r in Regiao.ObterTodos()
                            on v.RegiaoId equals r.Id
                            select new
@@ -50,10 +51,14 @@ namespace Linq.Metodos
                                Regiao = r.Nome
                            };
 
-            foreach (var item in grupoVendedoresRegiaoSql)
+            foreach (var item in grupoSql)
+            {
                 Console.WriteLine($"{item.Vendedor} - {item.Regiao}");
+            }
 
             #endregion
+
+            Console.ReadKey();
         }
     }
 }

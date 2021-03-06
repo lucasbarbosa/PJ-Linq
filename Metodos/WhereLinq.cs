@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,24 +17,28 @@ namespace Linq.Metodos
 
             Titulo.ExibirSub("LINQ");
 
-            var paresLinq = numeros.Where(x => x % 2 == 0);
-
-            foreach (var item in paresLinq)
+            var resultadoLinq = numeros.Where(x => x % 2 == 0);
+            foreach (var item in resultadoLinq)
+            {
                 Console.WriteLine(item);
-            
+            }
+
             #endregion
 
             #region Sql
 
             Titulo.ExibirSub("SQL");
-            var paresSql = from pares in numeros
-                            where pares % 2 == 0
-                            select pares;
-
-            foreach (var item in paresSql)
+            var resultadoSql = from pares in numeros
+                               where pares % 2 == 0
+                               select pares;
+            foreach (var item in resultadoSql)
+            {
                 Console.WriteLine(item);
-            
+            }
+
             #endregion
+
+            Console.ReadKey();
         }
     }
 }

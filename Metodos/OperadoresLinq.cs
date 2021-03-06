@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Linq;
 
@@ -36,6 +35,8 @@ namespace Linq.Metodos
             var padraoVazio = vazio.DefaultIfEmpty(404);
             foreach (var item in padraoVazio)
                 Console.WriteLine($"- padraoVazio: {item}");
+
+            Console.ReadKey();
         }
     }
 }

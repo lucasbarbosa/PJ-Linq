@@ -17,13 +17,5 @@ namespace Linq.Classes
             Console.WriteLine(titulo);
             Console.WriteLine("------------------------------");
         }
-
-        public static string ExibirRead(string titulo)
-        {
-            Console.WriteLine();
-            Console.WriteLine("------------------------------");
-            Console.Write(titulo);
-            return Console.ReadLine().ToString();
-        }
     }
 }

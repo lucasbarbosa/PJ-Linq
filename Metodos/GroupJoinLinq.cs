@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Linq;
 
@@ -16,7 +15,7 @@ namespace Linq.Metodos
             #region Linq
 
             Titulo.ExibirSub("LINQ");
-            var regiaoGrupoLinq = Regiao.ObterTodos()
+            var grupo = Regiao.ObterTodos()
                                     .GroupJoin(vendedores,
                                                 r => r.Id,
                                                 v => v.RegiaoId,
@@ -25,7 +24,7 @@ namespace Linq.Metodos
                                                     Regiao = regiao
                                                 });
 
-            foreach (var item in regiaoGrupoLinq)
+            foreach (var item in grupo)
             {
                 Console.WriteLine(item.Regiao.Nome);
                 foreach (var vendedor in item.Vendedor)
@@ -38,7 +37,7 @@ namespace Linq.Metodos
             #region Sql
 
             Titulo.ExibirSub("SQL");
-            var regiaoGrupoSql = from r in Regiao.ObterTodos()
+            var grupoSql = from r in Regiao.ObterTodos()
                            join v in Vendedor.ObterTodos()
                            on r.Id equals v.RegiaoId into vGrupo
                            select new
@@ -47,7 +46,7 @@ namespace Linq.Metodos
                                Regiao = r
                            };
 
-            foreach (var item in regiaoGrupoSql)
+            foreach (var item in grupoSql)
             {
                 Console.WriteLine(item.Regiao.Nome);
                 foreach (var vendedor in item.Vendedor)
@@ -56,6 +55,8 @@ namespace Linq.Metodos
             }
 
             #endregion
+
+            Console.ReadKey();
         }
     }
 }

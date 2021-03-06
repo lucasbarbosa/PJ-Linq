@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +11,17 @@ namespace Linq.Metodos
         {
             Titulo.Exibir("IENUMERABLE");
 
-            List<Vendedor> vendedores = Vendedor.ObterTodos().ToList();
+            List<Vendedor> lista = Vendedor.ObterTodos().ToList();
 
-            var consultaSql = from v in vendedores
+            var consultaSql = from v in lista
                            where v.Sexo == "M"
                            select v;
 
-            var consultaLinq = (from v in vendedores
+            var consultaLinq = (from v in lista
                               where v.Sexo == "M"
                               select v).ToList();
 
-            vendedores.Add(new Vendedor() {
+            lista.Add(new Vendedor() {
                 Id = 8,
                 PrimeiroNome = "Joselito",
                 UltimoNome = "Santos",
@@ -30,13 +29,15 @@ namespace Linq.Metodos
                 VendasSemestrais = 700
             });
 
-            Titulo.ExibirSub("Consuta SQL");
+            Titulo.ExibirSub("SQL");
             foreach (var item in consultaSql)
                 Console.WriteLine(item.PrimeiroNome);
 
-            Titulo.ExibirSub("Consuta LINQ");
+            Titulo.ExibirSub("LINQ");
             foreach (var item in consultaLinq)
                 Console.WriteLine(item.PrimeiroNome);
+
+            Console.ReadKey();
         }
     }
 }

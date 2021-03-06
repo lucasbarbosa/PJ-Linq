@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +11,17 @@ namespace Linq.Metodos
         {
             Titulo.Exibir("ORDER_BY");
 
-            List<Estudante> estudantes = Estudante.ObterEstudantes();
+            List<Estudante> lista = Estudante.ObterEstudantes();
 
             #region Linq
 
             Titulo.ExibirSub("LINQ");
-            var ordenarLinq = estudantes
+            var ordenar = lista
                             .OrderBy(x => x.Sexo)
                             .ThenByDescending(x => x.Materias.Count)
                             .ThenBy(x => x.Nome);
 
-            foreach (var item in ordenarLinq)
+            foreach (var item in ordenar)
                 Console.WriteLine($"{item.Nome} \t {item.Sexo} \t {item.Materias.Count}");
 
             #endregion
@@ -30,14 +29,16 @@ namespace Linq.Metodos
             #region Sql
 
             Titulo.ExibirSub("SQL");
-            var ordenarSql = (from e in estudantes
+            var sql = (from e in lista
                       orderby e.Sexo, e.Materias.Count descending
                       select e).ThenBy(x => x.Nome);
 
-            foreach (var item in ordenarSql)
+            foreach (var item in sql)
                 Console.WriteLine($"{item.Nome} \t {item.Sexo} \t {item.Materias.Count}");
 
             #endregion
+
+            Console.ReadKey();
         }
     }
 }

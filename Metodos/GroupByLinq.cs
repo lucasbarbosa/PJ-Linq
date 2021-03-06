@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Linq;
 
@@ -47,6 +46,8 @@ namespace Linq.Metodos
             }
 
             #endregion
+
+            Console.ReadKey();
         }
     }
 }

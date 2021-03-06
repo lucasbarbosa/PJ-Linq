@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,6 +79,8 @@ namespace Linq.Metodos
                 Console.WriteLine(colec[i]);
 
             #endregion
+
+            Console.ReadKey();
         }
     }
 }

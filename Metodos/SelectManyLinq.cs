@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +11,24 @@ namespace Linq.Metodos
         {
             Titulo.Exibir("SELECTMANY");
 
-            var estudantes = Estudante.ObterEstudantes();
+            var lista = Estudante.ObterEstudantes();
 
             Titulo.ExibirSub("Select");
 
-            IEnumerable<List<string>> materias = estudantes.Select(x => x.Materias);
+            IEnumerable<List<string>> materias = lista.Select(x => x.Materias);
 
             foreach (var item in materias)
                 foreach(var m in item)
                     Console.WriteLine(m);
 
-            Titulo.ExibirSub("SelectMany");
+            Titulo.ExibirSub("Many");
 
-            IEnumerable<string> materiasDistinct = estudantes.SelectMany(x => x.Materias).Distinct();
+            IEnumerable<string> many = lista.SelectMany(x => x.Materias).Distinct();
 
-            foreach (var item in materiasDistinct)
+            foreach (var item in many)
                 Console.WriteLine(item);
+
+            Console.ReadKey();
         }
     }
 }

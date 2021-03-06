@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Linq;
 
@@ -14,7 +13,7 @@ namespace Linq.Metodos
             #region Linq
 
             Titulo.ExibirSub("LINQ");
-            var vendedoresGrupoLinq = Vendedor.ObterTodos()
+            var grupo = Vendedor.ObterTodos()
                                         .GroupBy(x => new { x.VendasSemestrais, x.Sexo })
                                         .OrderBy(k => k.Key.VendasSemestrais)
                                         .ThenBy(s => s.Key.Sexo)
@@ -24,7 +23,7 @@ namespace Linq.Metodos
                                             Vendedor = v.OrderBy(x => x.PrimeiroNome)
                                         });
 
-            foreach (var item in vendedoresGrupoLinq)
+            foreach (var item in grupo)
             {
                 Console.WriteLine($"Os funcionários do sexo {item.Sexo} fizeram {item.Vendas} e são {item.Vendedor.Count()}:");
                 Console.WriteLine("--------------------------------------------------------");
@@ -41,7 +40,7 @@ namespace Linq.Metodos
 
             Titulo.ExibirSub("SQL");
 
-            var vendedoresGrupoSql = from v in Vendedor.ObterTodos()
+            var grupoSql = from v in Vendedor.ObterTodos()
                            group v by new { v.VendasSemestrais, v.Sexo } into vGrupo
                            orderby vGrupo.Key.VendasSemestrais, vGrupo.Key.Sexo
                            select new
@@ -51,7 +50,7 @@ namespace Linq.Metodos
                                Vendedor = vGrupo.OrderBy(x => x.PrimeiroNome)
                            };
 
-            foreach (var item in vendedoresGrupoSql)
+            foreach (var item in grupoSql)
             {
                 Console.WriteLine($"Os funcionários do sexo {item.Sexo} fizeram {item.Vendas} e são {item.Vendedor.Count()}:");
                 Console.WriteLine("--------------------------------------------------------");
@@ -63,6 +62,8 @@ namespace Linq.Metodos
             }
 
             #endregion
+
+            Console.ReadKey();
         }
     }
 }

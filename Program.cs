@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 
 namespace Linq
 {
@@ -9,10 +8,8 @@ namespace Linq
 
         static void Main(string[] args)
         {
-            string exercicio = Tela.Iniciar();
-            linq = ExerciciosFactory.Method(exercicio);
+            linq = ExerciciosFactory.Method(14);
             linq.Executar();
-            Tela.Finalizar();
         }
     }
 }

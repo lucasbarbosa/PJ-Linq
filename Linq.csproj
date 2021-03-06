@@ -47,10 +47,9 @@
     <Compile Include="Classes\Estudante.cs" />
     <Compile Include="Classes\ExerciciosFactory.cs" />
     <Compile Include="Classes\Regiao.cs" />
-    <Compile Include="Classes\Tela.cs" />
     <Compile Include="Metodos\AggregateLinq.cs" />
     <Compile Include="Classes\Vendedor.cs" />
-    <Compile Include="Interfaces\ITestLinq.cs" />
+    <Compile Include="ITestLinq.cs" />
     <Compile Include="Metodos\ConversoresLinq.cs" />
     <Compile Include="Metodos\DistinctLinq.cs" />
     <Compile Include="Metodos\GroupBy2Linq.cs" />

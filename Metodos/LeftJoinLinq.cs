@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +17,7 @@ namespace Linq.Metodos
 
             Titulo.ExibirSub("LINQ");
 
-            var vendedoresRegiaoLinq = vendedores
+            var grupo = vendedores
                             .GroupJoin(Regiao.ObterTodos(),
                                     v => v.RegiaoId,
                                     r => r.Id,
@@ -34,7 +33,7 @@ namespace Linq.Metodos
                                         RegiaoNome = (regiao == null) ? "Sem região" : regiao.Nome
                                     });
 
-            foreach (var item in vendedoresRegiaoLinq)
+            foreach (var item in grupo)
                 Console.WriteLine($"{item.Nome} \t {item.RegiaoNome}");
 
             #endregion
@@ -43,7 +42,7 @@ namespace Linq.Metodos
 
             Titulo.ExibirSub("SQL");
 
-            var vendedoresRegiaoSql = from v in vendedores
+            var grupoSql = from v in vendedores
                            join r in Regiao.ObterTodos()
                            on v.RegiaoId equals r.Id into vGrupo
                            from r in vGrupo.DefaultIfEmpty()
@@ -53,10 +52,12 @@ namespace Linq.Metodos
                                RegiaoNome = (r == null) ? "Sem região" : r.Nome
                            };
             
-            foreach (var item in vendedoresRegiaoSql)
+            foreach (var item in grupoSql)
                 Console.WriteLine($"{item.Nome} \t {item.RegiaoNome}");
 
             #endregion
+
+            Console.ReadKey();
         }
     }
 }

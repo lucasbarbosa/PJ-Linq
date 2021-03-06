@@ -1,5 +1,5 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
+using System;
 
 namespace Linq.Metodos
 {
@@ -7,7 +7,9 @@ namespace Linq.Metodos
     {
         public void Executar()
         {
-            Titulo.Exibir("MÉTODO INVÁLIDO");
+            Titulo.ExibirSub("MÉTODO INVÁLIDO");
+
+            Console.ReadKey();
         }
     }
 }

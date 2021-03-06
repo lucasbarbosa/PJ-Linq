@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Linq;
 
@@ -13,7 +12,7 @@ namespace Linq.Metodos
 
             #region Listas
 
-            string[] paises1 = { "BR", "JP", "AU", "AL", "EUA", "URU", "FRN", "CBA" };
+            string[] paises = { "BR", "JP", "AU", "AL", "EUA", "URU", "FRN", "CBA" };
             string[] paises2 = { "EUA", "URU", "FRN", "BR", "JP", "AU", "AL", "CBA" };
 
             #endregion
@@ -21,13 +20,13 @@ namespace Linq.Metodos
             #region Take
 
             Titulo.ExibirSub("TAKE LINQ");
-            var takeLinq = paises1.Take(3);
+            var take = paises.Take(3);
 
-            foreach (var item in takeLinq)
+            foreach (var item in take)
                 Console.WriteLine(item);
 
             Titulo.ExibirSub("TAKE SQL");
-            var takeSql = (from p in paises1
+            var takeSql = (from p in paises
                           select p).Take(3);
 
             foreach (var item in takeSql)
@@ -38,7 +37,7 @@ namespace Linq.Metodos
             #region Take.Reverse
 
             Titulo.ExibirSub("TAKE.REVERSE LINQ");
-            var takeReverse = paises1.Take(3).Reverse().ToList();
+            var takeReverse = paises.Take(3).Reverse().ToList();
 
             foreach (var item in takeReverse)
                 Console.WriteLine(item);
@@ -48,7 +47,7 @@ namespace Linq.Metodos
             #region TakeWhile
 
             Titulo.ExibirSub("TAKE_WHILE");
-            var takeWhile = paises1.TakeWhile(x => x.Length == 2);
+            var takeWhile = paises.TakeWhile(x => x.Length == 2);
 
             foreach (var item in takeWhile)
                 Console.WriteLine(item);
@@ -58,7 +57,7 @@ namespace Linq.Metodos
             #region Skip
 
             Titulo.ExibirSub("SKIP");
-            var skip = paises1.Skip(3);
+            var skip = paises.Skip(3);
 
             foreach (var item in skip)
                 Console.WriteLine(item);
@@ -74,6 +73,8 @@ namespace Linq.Metodos
                 Console.WriteLine(item);
 
             #endregion
+
+            Console.ReadKey();
         }
     }
 }

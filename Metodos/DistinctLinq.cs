@@ -1,5 +1,4 @@
 ﻿using Linq.Classes;
-using Linq.Interfaces;
 using System;
 using System.Linq;
 
@@ -17,9 +16,9 @@ namespace Linq.Metodos
 
             Titulo.ExibirSub("Padrão");
 
-            var paisesDistinct = paises.Distinct();
+            var resultado = paises.Distinct();
 
-            foreach (var item in paisesDistinct)
+            foreach (var item in resultado)
                 Console.WriteLine(item);
 
             #endregion
@@ -28,9 +27,9 @@ namespace Linq.Metodos
 
             Titulo.ExibirSub("OrdinalIgnoreCase");
 
-            var paisesIgnore = paises.Distinct(StringComparer.OrdinalIgnoreCase);
+            var resultadoIgnore = paises.Distinct(StringComparer.OrdinalIgnoreCase);
 
-            foreach (var item in paisesIgnore)
+            foreach (var item in resultadoIgnore)
                 Console.WriteLine(item);
 
             #endregion
@@ -40,7 +39,7 @@ namespace Linq.Metodos
             Titulo.ExibirSub("Vendedores");
 
             // Todo: Distinct para tipo complexo
-            var vendedoresDistinct = Vendedor.ObterTodos()
+            var vendedores = Vendedor.ObterTodos()
                                         .Select(x => new {
                                             Id = x.Id,
                                             PrimeiroNome = x.PrimeiroNome,
@@ -51,10 +50,12 @@ namespace Linq.Metodos
                                         })
                                         .Distinct();
 
-            foreach (var item in vendedoresDistinct)
+            foreach (var item in vendedores)
                 Console.WriteLine(item.Id);
 
             #endregion
+
+            Console.ReadKey();
         }
     }
 }
